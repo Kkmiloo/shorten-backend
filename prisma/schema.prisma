@@ -25,7 +25,7 @@ model User {
 model URLs {
   id             String    @id @default(uuid())
   longUrl        String
-  shortCode      String
+  shortCode      String    @unique
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   expirationDate DateTime?

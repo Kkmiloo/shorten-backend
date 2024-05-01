@@ -57,7 +57,8 @@ export class AuthService extends PrismaClient implements OnModuleInit {
     return user;
   }
   findAll() {
-    return `This action returns all auth`;
+    const users = this.user.findMany({ include: { urls: true } });
+    return users;
   }
 
   findOne(id: number) {
