@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "URLs" ADD COLUMN     "userId" TEXT;
+
+-- AddForeignKey
+ALTER TABLE "URLs" ADD CONSTRAINT "URLs_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
