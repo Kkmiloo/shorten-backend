@@ -88,4 +88,20 @@ export class ShortenService extends PrismaClient implements OnModuleInit {
       }
     }
   }
+
+  async redirectUrl(shortCode: string) {
+    const url = await this.uRLs.findUnique({
+      where: {
+        shortCode: shortCode,
+      },
+    });
+
+    if (!url) {
+      throw new NotFoundException(`Url Not Found`);
+    }
+
+    delete url.userId;
+
+    return url;
+  }
 }
