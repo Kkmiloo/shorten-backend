@@ -18,7 +18,9 @@ model User {
   email    String  @unique
   password String
   active   Boolean @default(false)
+  //Token to activate the account
   token    String  @default("")
+  roles    Role[]  @default([USER])
   urls     URLs[]
 }
 
@@ -43,4 +45,10 @@ model Analytics {
   ipAddress  String?
   url        URLs     @relation(fields: [shortUrlId], references: [id])
   shortUrlId String
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPERADMIN
 }
